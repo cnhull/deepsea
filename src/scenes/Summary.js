@@ -62,33 +62,4 @@ class Summary extends Phaser.Scene {
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

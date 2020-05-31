@@ -5,7 +5,7 @@ class Play extends Phaser.Scene {
 
     preload() {
         // load images/tile sprites
-        this.load.image('testfield', './assets/testing.png');
+        this.load.image('testfield', './assets/img/testing.png');
         
         
 
@@ -59,16 +59,24 @@ class Play extends Phaser.Scene {
         }
         
         // Display test room messages
-        this.testTitle = this.add.text(180, 10, 'Deep Seas Test Room!', testConfig);
-        this.testGreeting = this.add.text(180, 60, 'Welcome, Dr. Ingram!', testConfig);
+        this.testTitle = this.add.text(180, 10, 'Welcome to Project: Deep Seas', testConfig);
+        //this.testGreeting = this.add.text(180, 60, '', testConfig);
         testConfig.fixedWidth = 420;
         testConfig.fontSize = '24px';
         this.testAsk = this.add.text(140, 110, 'What would you like to test?', testConfig);
         
         // Display test options
         testConfig.fixedWidth = 200;
-        this.testDrone = this.add.text(90, 240, 'Test: Drone Drag', buttonTestConfig);
-        this.testDays = this.add.text(340, 240, 'Test: Game Loop', buttonTestConfig);
+        this.goDrone = new TextButton(this, centerX, centerY - mod, 'Drone Simulation',  game.buttonConfig, () => this.startDrone()).setOrigin(0.5);//.setStyle(menuConfig);
+        //this.goDrone.alpha = 0;
+        this.add.existing(this.goDrone);
+
+        this.goLoop = new TextButton(this, centerX, centerY + mod, 'Test loop',  game.buttonConfig, () => this.startLoop()).setOrigin(0.5);//.setStyle(menuConfig);
+        //this.goLoop.alpha = 0;
+        this.add.existing(this.goLoop);
+
+        //this.testDrone = this.add.text(90, 240, 'Test: Drone Drag', buttonTestConfig);
+        //this.testDays = this.add.text(340, 240, 'Test: Game Loop', buttonTestConfig);
 
         // Display restart prompt
         buttonTestConfig.fixedWidth = 220;
@@ -78,6 +86,19 @@ class Play extends Phaser.Scene {
         // Play Groovy test room track
         this.test_music.play();
         
+
+        
+    }
+
+    startDrone(){
+        this.test_music.stop();
+        this.scene.start("droneScene")
+    }
+
+    startLoop(){
+        console.log("inside of startloop function");
+            this.test_music.stop();
+            this.scene.start("day0")
 
         
     }
@@ -102,7 +123,7 @@ class Play extends Phaser.Scene {
                 && game.input.mousePointer.y < 260
                 ) {
                     this.test_music.stop();
-                    this.scene.start("dayScene")
+                    this.scene.start("day0")
                 }
         
         

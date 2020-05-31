@@ -5,11 +5,23 @@ class Menu extends Phaser.Scene {
 
     preload() {
         // load audio
-        this.load.audio('sfx_select', './assets/blip_select12.wav');
+        this.load.audio('sfx_select', './assets/sfx/blip_select12.wav');
         
-        this.load.audio('sfx_test', './assets/Test_Track.mp3');
-        this.load.audio('sfx_title', './assets/Title_Track.mp3');
-        this.load.image('title', './assets/Title.png');
+        this.load.audio('sfx_test', './assets/sfx/Test_Track.mp3');
+        this.load.audio('sfx_title', './assets/sfx/Title_Track.mp3');
+        this.load.image('title', './assets/img/Title.png');
+
+        this.load.path = "./assets/";
+
+        // load JSON (dialog)
+        this.load.json('dialog', 'json/dialog.json');
+        this.load.json('day2', 'json/day2.json');
+
+        // load images
+        this.load.image('dialogbox', 'img/dialogbox.png');
+
+        // load bitmap font
+        this.load.bitmapFont('gem_font', 'font/gem.png', 'font/gem.xml');
     }
 
     
